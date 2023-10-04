@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>#set-height {
+    display: block;
+    height: 10000px;
+  }
+  #v0 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  p font-family helvetica {
+    font-size: 24px;
+  }
+  </style>
+<body>
+    
+<div id="set-height"></div>
+<p id="time"></p>
+<video id="v0" tabindex="0" autobuffer="autobuffer" preload="preload">
+  <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="anim site vitrine2.mp4"></source>
+
+    <!-- <source src="anim site vitrine.webm" type="video/webm" /> -->
+  
+  <p>Sorry, your browser does not support the &lt;video&gt; element.</p>
+</video>
+</body>
+
+<script>// select video element
+    var vid = document.getElementById('v0');
+    //var vid = $('#v0')[0]; // jquery option
+    
+    // pause video on load
+    vid.pause();
+     
+    // pause video on document scroll (stops autoplay once scroll started)
+    window.onscroll = function(){
+        vid.pause();
+    };
+    
+    // refresh video frames on interval for smoother playback
+    setInterval(function(){
+        vid.currentTime = window.pageYOffset/300;
+    }, 10);</script>
+
+</html>
